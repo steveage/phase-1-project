@@ -1,0 +1,13 @@
+.cities-grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: aqua;
+    padding: 10px;
+}
+
+.cities-grid-item {
+    padding: 20px;
+    border: 1px solid turquoise;
+    font-size: 30px;
+    text-align: center;
+}
