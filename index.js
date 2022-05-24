@@ -59,8 +59,11 @@ function createCityAqiDivUI(cityAqi) {
     const divUI = getCityDivUI(cityAqi);
     const cityNameUI = createUiElement('header', cityAqi.data.city.name);
     const aqiUI = createUiElement('p', cityAqi.data.aqi);
+    const button = createUiElement('button', "X");
+    button.addEventListener("click", handleButtonClick);
     divUI.appendChild(cityNameUI);
     divUI.appendChild(aqiUI);
+    divUI.appendChild(button);
     return divUI;
 }
 
@@ -75,4 +78,12 @@ function createUiElement(elementName, text) {
     const node = document.createTextNode(text);
     element.appendChild(node);
     return element;
+}
+
+function handleButtonClick(event) {
+    event.preventDefault();
+    const cityName = event.target.parentElement.childNodes[0].textContent;
+    const city = allCitiesAqi.find(city => city.data.city.name === cityName);
+    allCitiesAqi.splice(allCitiesAqi.indexOf(city), 1);
+    displayCities();
 }
